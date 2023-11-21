@@ -15,24 +15,21 @@ function covidData(){
     )
   })
    showCovidData.then((data)=>{console.log(data) 
-    let district=document.getElementsByClassName("datas");
-    document.getElementsByClassName("card-text").innerHTML=district.value
-    let confirmed=document.getElementsByClassName("card-text1");
-    let Deceased=document.getElementsByClassName("card-tex2");
-    let Tested=document.getElementsByClassName("card-text3")
-    let Recovered=document.getElementsByClassName("card-text4");
-    let Vaccinated1=document.getElementsByClassName("card-text5");
-    let Vaccinated2=document.getElementsByClassName("card-text6");
-    confirmed.innerHTML=data.TN.total.confirmed
-    Deceased.innerHTML=data.TN.total.deceased
-    Tested.innerHTML=data.TN.total. tested
-    Recovered.innerHTML=data.TN.total.recovered
-    Vaccinated1.innerHTML=data.TN.total.vaccinated1
-    Vaccinated2.innerHTML=data.TN.total.Vaccinated2
-    // let totalCases= data
-    console.log(data.TN)
-    console.log(data.TN.total.vaccinated1)
-    console.log(district)
+   let input = document.getElementsByClassName('datas')[0].value
+   console.log(input)
+   let getData= data.filter((state)=>{
+    state.input==data
+   })
+   console.log(getData)
+   let card =document.getElementsByClassName('card-body')
+   card.innerHTML=`<p class="card-text card-head">Covid-19 Data</p>
+   <p class="card-text1" >Confirmed:${getData.confirmed}</p>
+   <p class="card-text2">Deceased:</p>
+   <p class="card-text3">Recovered:</p>
+   <p class="card-text4">Tested:</p>
+   <p class="card-text5">Vaccinated1:</p>
+   <p class="card-text6">Vaccinated2:</p>`
+ 
   }).catch((err)=>{console.log(err)})
  }
 
